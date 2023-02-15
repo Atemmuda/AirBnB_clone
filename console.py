@@ -254,7 +254,7 @@ change into the JSON file).\n")
                         )
                         eval(formattedCommand)
                     return
-        except:
+        except Exception:
             return super().default(line)
 
     def __getArgumentsFromLine(self, prmLine):
@@ -290,7 +290,7 @@ change into the JSON file).\n")
             parameters = results[0]
 
             return parameters[0], parameters[3]
-        except:
+        except Exception:
             return '', ''
 
     def __checkValidArguments(self, prmLine: str) -> bool:
@@ -351,10 +351,10 @@ change into the JSON file).\n")
     def __type(self, prmStr: str):
         try:
             return int(prmStr)
-        except:
+        except Exception:
             try:
                 return float(prmStr)
-            except:
+            except Exception:
                 return str(prmStr).replace('"', "").replace("'", "")
 
 
