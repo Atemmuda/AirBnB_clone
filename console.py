@@ -261,7 +261,7 @@ change into the JSON file).\n")
         """
             return argument from command line
         """
-        regex = "^(.*)\.(.*)\((.*)\)$"
+        regex = "^(.*)\\.(.*)\\((.*)\\)$"
         regex_prog = re.compile(regex)
         results = regex_prog.findall(prmLine)
         arguments = results[0]
@@ -284,7 +284,7 @@ change into the JSON file).\n")
             return parameter from argument
         """
         try:
-            regex = "^\"(.*)\"((,? ?)(\{.*\}))?$"
+            regex = "^\"(.*)\"((,? ?)(\\{.*\\}))?$"
             regex_prog = re.compile(regex)
             results = regex_prog.findall(prmArguments)
             parameters = results[0]
