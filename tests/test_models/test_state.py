@@ -1,22 +1,47 @@
 #!/usr/bin/python3
+""" StateTest module """
 
-"""
-Model testing functionality and features of the state model
-"""
-import unittest
+
 from models.state import State
+import unittest
 
 
-class TestState(unittest.TestCase):
-    """
-    Testing functionalities and features
-    of the state class/object
-    """
+class StateTest(unittest.TestCase):
+    """ StateTest class """
 
-    def test_class_documentation(self):
-        """testing if class is documented"""
+    def testClassDocumentation(self):
+        """
+            Class have documentation
+        """
         self.assertGreater(len(State.__doc__), 0)
 
-    def test_init_docs(self):
-        """test for documentation of the constructor"""
+    def testConstructorDocumentation(self):
+        """
+            Constructor have documentation
+        """
         self.assertGreater(len(State.__init__.__doc__), 0)
+
+    def testConstructor(self):
+        """
+            Constructor test
+        """
+        s1 = State()
+        s1.name = "Lille"
+        s1.save()
+        self.assertGreater(s1.updated_at, s1.created_at)
+        self.assertDictEqual(
+            s1.to_dict(),
+            {
+                'id': s1.id,
+                'created_at': s1.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f"),
+                'updated_at': s1.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f"),
+                'name': "Lille",
+                '__class__': 'State'
+            }
+        )
+
+    def testNameType(self):
+        """
+            Check name attribute type
+        """
+        self.assertIsInstance(State().name, str)
