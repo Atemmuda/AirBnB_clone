@@ -1,49 +1,98 @@
 #!/usr/bin/python3
-"""Test model for the for the base class
-"""
+""" BaseTest module """
 
-import unittest
+
+from datetime import datetime, timedelta
 from models.base_model import BaseModel
-"""import time
-from datetime import datetime, timedelta"""
+import time
+import unittest
 
 
-class TestBaseModel(unittest.TestCase):
-    """Class for the base model testing"""
+class BaseModelTest(unittest.TestCase):
+    """ BaseTest class """
 
-    def test_class_docs(self):
-        """test for class documentation"""
+    def testClassDocumentation(self):
+        """
+            Class have documentation
+        """
         self.assertGreater(len(BaseModel.__doc__), 0)
 
-    def test_init_docs(self):
-        """test for documentation of the constructor"""
+    def testConstructorDocumentation(self):
+        """
+            Constructor have documentation
+        """
         self.assertGreater(len(BaseModel.__init__.__doc__), 0)
 
-    def test_str_docs(self):
-        """test for the documentation of the __str__ function"""
+    def testStrDocumentation(self):
+        """
+            __str__ function have documentation
+        """
         self.assertGreater(len(BaseModel.__str__.__doc__), 0)
 
-    def test_str(self):
-        """test for correct printing of the __str__ function"""
-        baseM1 = BaseModel()
-        baseM1.name = "first base model"
-        baseM1.number = 89
-        self.assertEqual(baseM1.__str__(),
-                         "[{}] ({}) {}"
-                         .format(BaseModel.__name__,
-                                 baseM1.id,
-                                 baseM1.__dict__))
-
-    def test_save_docs(self):
-        """test for the documentation of the save function"""
+    def testSaveDocumentation(self):
+        """
+            save function have documentation
+        """
         self.assertGreater(len(BaseModel.save.__doc__), 0)
 
-    def test_saved(self):
-        """test for the updated_at changes when the saved function is called"""
-        baseModel = BaseModel()
-        updated = baseModel.updated_at
-        self.assertNotEqual((baseModel.save()), updated)
-
-    def test_to_dict_docs(self):
-        """test for the documentation of the to_dict function"""
+    def testToDictDocumentation(self):
+        """
+            to_dict function have documentation
+        """
         self.assertGreater(len(BaseModel.to_dict.__doc__), 0)
+
+    def testStr(self):
+        """
+            Test __str__ function
+        """
+        b1 = BaseModel()
+        b1.name = "Holberton"
+        b1.my_number = 89
+        b1.my_wrong_test = None
+        self.assertEqual(
+            b1.__str__(), "[{}] ({}) {}".format(
+                b1.__class__.__name__,
+                b1.id,
+                b1.__dict__
+            )
+        )
+
+    def testSave(self):
+        """
+            Test save function
+        """
+        import os
+        import json
+        from models import storage
+
+        b1 = BaseModel()
+        b1.name = "Holberton"
+        b1.my_number = 89
+        b1.my_wrong_test = None
+        b1.save()
+        self.assertGreater(b1.updated_at, b1.created_at)
+        self.assertDictEqual(
+            b1.to_dict(),
+            {
+                '__class__': 'BaseModel',
+                'created_at': b1.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f"),
+                'id': b1.id,
+                'my_number': 89,
+                'name': "Holberton",
+                'updated_at': b1.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+            }
+        )
+
+        tmpDict = {}
+        for key, value in storage.all().items():
+            tmpDict[key] = value.to_dict()
+        b1 = BaseModel()
+        key = "{}.{}".format("BaseModel", b1.id)
+        storage.new(b1)
+        b1.save()
+        tmpDict[key] = b1.to_dict()
+        inputStr = json.dumps(tmpDict)
+        self.assertTrue(os.path.exists("file.json"))
+        with open("file.json", "r") as file:
+            output = file.read()
+        self.assertEqual(json.loads(inputStr), json.loads(output))
