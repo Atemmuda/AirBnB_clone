@@ -1,19 +1,46 @@
 #!/usr/bin/python3
+""" UserTest module """
 
-"""
-Model for testing the user model
-"""
-import unittest
+
 from models.user import User
+import unittest
 
 
-class TestUser(unittest.TestCase):
-    """Class for testing user object"""
+class UserTest(unittest.TestCase):
+    """ UserTest class """
 
-    def test_class_documentation(self):
-        """testing if class is documented"""
+    def testClassDocumentation(self):
+        """
+            Class have documentation
+        """
         self.assertGreater(len(User.__doc__), 0)
 
-    def test_init_docs(self):
-        """test for documentation of the constructor"""
+    def testConstructorDocumentation(self):
+        """
+            Constructor have documentation
+        """
         self.assertGreater(len(User.__init__.__doc__), 0)
+
+    def testEmailType(self):
+        """
+            Check email attribute type
+        """
+        self.assertIsInstance(User().email, str)
+
+    def testPasswordType(self):
+        """
+            Check password attribute type
+        """
+        self.assertIsInstance(User().password, str)
+
+    def testFirstNameType(self):
+        """
+            Check first_name attribute type
+        """
+        self.assertIsInstance(User().first_name, str)
+
+    def testLastNameType(self):
+        """
+            Check last_name attribute type
+        """
+        self.assertIsInstance(User().last_name, str)
