@@ -1,0 +1,12 @@
+body > header{
+    background-color: #ffffff;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid #cccccc;
+}
+
+header img {
+    position: absolute;
+    text-align: left;
+    left: 20px;
+}
