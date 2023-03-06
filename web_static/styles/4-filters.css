@@ -1,0 +1,40 @@
+
+/* Button search:
+tag button
+text Search
+font size: 18px
+inside the section filters
+background color #FF5A5F
+text color #FFFFFF
+height: 48px
+width: 20% of the section filters
+no borders
+border radius: 4px
+center vertically and at 30px of the right border
+change opacity to 90% when the mouse is on the button */
+
+.filters{
+    background-color: #fff;
+    height: 70px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+}
+
+button{
+    background-color: #FF5A5F;
+    color: #FFFFFF;
+    font-size: 18px;
+    height: 48px;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+    position: absolute;
+    right: 30px;
+    top: 12px;
+}
+
+button:hover{
+    opacity: 90%;
+}
+
