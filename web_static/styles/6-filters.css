@@ -1,0 +1,80 @@
+
+.filters{
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    height: 70px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+}
+
+.locations, .amenities{
+    float: left;
+    height: 100%;
+    width: 30%;
+}
+
+.locations{
+    border-right: 1px #DDDDDD solid;
+}
+
+section.filters div h3 {
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  
+  section.filters div h4 {
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 3px;
+  }
+  
+  section.filters ul {
+    list-style: none;
+    padding-bottom: 10px;
+  }
+  
+  section.filters ul.popover li {
+    line-height: 1.7em;
+  }
+  
+  section.filters ul.popover > li > h2 {
+    margin-bottom: 1px;
+  }
+  
+  section.filters ul.popover {
+    position: relative;
+    display: none;
+    background-color: #fafafa;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: -5px;
+    z-index: 1;
+  }
+  
+  section.filters div:hover ul.popover {
+    display: block;
+  }
+  
+  section.filters ul h2 {
+    font-size: 16px;
+  }
+button{
+    background-color: #FF5A5F;
+    color: #FFFFFF;
+    font-size: 18px;
+    height: 48px;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+    position: absolute;
+    right: 30px;
+    top: 12px;
+}
+
+button:hover{
+    opacity: 90%;
+}
