@@ -1,0 +1,11 @@
+body > header{
+    background-color: #ffffff;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+header img {
+    position: absolute;
+    left: 20px;
+}
